@@ -6,9 +6,9 @@ public class Main {
 	public static void main (String[] args) {
 		List<Flight> testFlights = FlightBuilder.createFlights();
 		
-		System.out.println("Тестовый набор перелётов: " + testFlights.toString() + "\n");
-		System.out.println("Фильтрация перелётов с вылетом до текущего момента времени: " + FilterOutFlights.Departured(testFlights));
-		System.out.println("Фильтрация перелётов с некорректными сегментами: " + FilterOutFlights.Incorrect(testFlights));
-		System.out.println("Фильтрация перелётов с временем на земле больше 2х часов: " + FilterOutFlights.OverTwoHoursOnGround(testFlights));
+		System.out.println("РўРµСЃС‚РѕРІС‹Р№ РЅР°Р±РѕСЂ РїРµСЂРµР»С‘С‚РѕРІ: " + testFlights.toString() + "\n");
+		System.out.println("Р¤РёР»СЊС‚СЂР°С†РёСЏ РїРµСЂРµР»С‘С‚РѕРІ СЃ РІС‹Р»РµС‚РѕРј РґРѕ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р° РІСЂРµРјРµРЅРё: " + FilterOutFlights.Departured(testFlights));
+		System.out.println("Р¤РёР»СЊС‚СЂР°С†РёСЏ РїРµСЂРµР»С‘С‚РѕРІ СЃ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹РјРё СЃРµРіРјРµРЅС‚Р°РјРё: " + FilterOutFlights.Incorrect(testFlights));
+		System.out.println("Р¤РёР»СЊС‚СЂР°С†РёСЏ РїРµСЂРµР»С‘С‚РѕРІ СЃ РІСЂРµРјРµРЅРµРј РЅР° Р·РµРјР»Рµ Р±РѕР»СЊС€Рµ 2С… С‡Р°СЃРѕРІ: " + FilterOutFlights.OverTwoHoursOnGround(testFlights));
 	}
 }
