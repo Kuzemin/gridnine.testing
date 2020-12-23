@@ -7,10 +7,9 @@ import java.util.List;
 
 abstract class FilterOutFlights {
 	
-	// Исключение перелётов, в которых вылет до текущего момента времени
+	// РСЃРєР»СЋС‡РµРЅРёРµ РїРµСЂРµР»С‘С‚РѕРІ, РІ РєРѕС‚РѕСЂС‹С… РІС‹Р»РµС‚ РґРѕ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р° РІСЂРµРјРµРЅРё
 	static List<Flight> Departured(List<Flight> flights) {
 		List<Flight> filtered = new ArrayList<Flight>();
-		//System.out.println(flights.size());
 		for (int i = 0; i < flights.size(); i += 1) {
 			Flight flight = flights.get(i);
 			
@@ -18,14 +17,14 @@ abstract class FilterOutFlights {
 				filtered.add(flight);
 			}
 			else {
-				// System.out.println("Время вылета " + (i + 1) + " перелёта: " + flight.getSegments().get(0).getDepartureDate() + " уже прошло.");
+				// System.out.println("Р’СЂРµРјСЏ РІС‹Р»РµС‚Р° " + (i + 1) + " РїРµСЂРµР»С‘С‚Р°: " + flight.getSegments().get(0).getDepartureDate() + " СѓР¶Рµ РїСЂРѕС€Р»Рѕ.");
 			}
 		}
 		
 		return filtered;
 	}
 	
-	// Исключение перелётов, в которых имеются сегменты с датой прилёта раньше даты вылета
+	// РСЃРєР»СЋС‡РµРЅРёРµ РїРµСЂРµР»С‘С‚РѕРІ, РІ РєРѕС‚РѕСЂС‹С… РёРјРµСЋС‚СЃСЏ СЃРµРіРјРµРЅС‚С‹ СЃ РґР°С‚РѕР№ РїСЂРёР»С‘С‚Р° СЂР°РЅСЊС€Рµ РґР°С‚С‹ РІС‹Р»РµС‚Р°
 	static List<Flight> Incorrect(List<Flight> flights) {
 		List<Flight> filtered = new ArrayList<Flight>();
 		for (int i = 0; i < flights.size(); i += 1) {
@@ -35,7 +34,7 @@ abstract class FilterOutFlights {
 			for (int j = 0; j < segs.size(); j += 1) {
 				if (segs.get(j).getArrivalDate().isBefore(segs.get(j).getDepartureDate())) {
 					good = false;
-					// System.out.println("Сегмент " + segs.get(j).toString() + " в " + (i + 1) + " перелёте некорректный.");
+					// System.out.println("РЎРµРіРјРµРЅС‚ " + segs.get(j).toString() + " РІ " + (i + 1) + " РїРµСЂРµР»С‘С‚Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№.");
 					break;
 				}
 			if (good) { filtered.add(flight); }
@@ -45,8 +44,8 @@ abstract class FilterOutFlights {
 		return filtered;
 	}
 	
-	// Исключение перелётов, в которых общее время, проведённое на земле превышает два часа
-	// (время на земле — это интервал между прилётом одного сегмента и вылетом следующего за ним)
+	// РСЃРєР»СЋС‡РµРЅРёРµ РїРµСЂРµР»С‘С‚РѕРІ, РІ РєРѕС‚РѕСЂС‹С… РѕР±С‰РµРµ РІСЂРµРјСЏ, РїСЂРѕРІРµРґС‘РЅРЅРѕРµ РЅР° Р·РµРјР»Рµ РїСЂРµРІС‹С€Р°РµС‚ РґРІР° С‡Р°СЃР°
+	// (РІСЂРµРјСЏ РЅР° Р·РµРјР»Рµ вЂ” СЌС‚Рѕ РёРЅС‚РµСЂРІР°Р» РјРµР¶РґСѓ РїСЂРёР»С‘С‚РѕРј РѕРґРЅРѕРіРѕ СЃРµРіРјРµРЅС‚Р° Рё РІС‹Р»РµС‚РѕРј СЃР»РµРґСѓСЋС‰РµРіРѕ Р·Р° РЅРёРј)
 	static List<Flight> OverTwoHoursOnGround(List<Flight> flights) {
 		List<Flight> filtered = new ArrayList<Flight>();
 		for (int i = 0; i < flights.size(); i += 1) {
@@ -58,7 +57,7 @@ abstract class FilterOutFlights {
 			}
 			if (minsSpentOnGround <= 120) { filtered.add(flight); }
 			else {
-				// System.out.println("Время на земле в " + (i + 1) + " перелёте составляет " + minsSpentOnGround + " минут. Это слишком много!");
+				// System.out.println("Р’СЂРµРјСЏ РЅР° Р·РµРјР»Рµ РІ " + (i + 1) + " РїРµСЂРµР»С‘С‚Рµ СЃРѕСЃС‚Р°РІР»СЏРµС‚ " + minsSpentOnGround + " РјРёРЅСѓС‚. Р­С‚Рѕ СЃР»РёС€РєРѕРј РјРЅРѕРіРѕ!");
 			}
 		}
 		
